@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "license": "GPL-3.0",
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@testing-library/dom": "^10.4.0",
