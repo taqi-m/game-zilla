@@ -126,30 +126,29 @@ This means:
 - You are free to use, modify, and distribute this software
 - If you distribute modified versions, they must also be licensed under the GPL-3.0
 - Any derivative works must be open source
-- The complete license text is available in the LICENSE file
+<div align="center">
+
 ## 👥 Team
 
-<div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
-    <div style="display: inline-block; margin: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 16px; padding: 16px 24px; background: #fff; text-align: center; width: 200px;">
-        <a href="https://github.com/taqi-m" style="text-decoration: none;">
-            <img src="https://avatars.githubusercontent.com/u/76934497?v=4" alt="Muhammad Taqi" style="border-radius: 50%; width: 80px; height: 80px;"/><br/>
-            <span style="display: block; font-weight: bold; font-size: 1.1em; margin-top: 8px;">Muhammad Taqi</span>
-            <span style="display: block; color: #555;">👨‍💻 Lead Developer</span>
-        </a>
-    </div>
-    <div style="display: inline-block; margin: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 16px; padding: 16px 24px; background: #fff; text-align: center; width: 200px;">
-        <a href="https://github.com/l232550" style="text-decoration: none;">
-            <img src="https://avatars.githubusercontent.com/u/168574829?v=4" alt="Tooba Nadeem" style="border-radius: 50%; width: 80px; height: 80px;"/><br/>
-            <span style="display: block; font-weight: bold; font-size: 1.1em; margin-top: 8px;">Tooba Nadeem</span>
-            <span style="display: block; color: #555;">🎨 UI/UX Designer</span>
-        </a>
-    </div>
-    <div style="display: inline-block; margin: 10px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); border-radius: 16px; padding: 16px 24px; background: #fff; text-align: center; width: 200px;">
-        <a href="https://github.com/NayabMaryam" style="text-decoration: none;">
-            <img src="https://avatars.githubusercontent.com/u/168572636?v=4" alt="Nayab Maryam" style="border-radius: 50%; width: 80px; height: 80px;"/><br/>
-            <span style="display: block; font-weight: bold; font-size: 1.1em; margin-top: 8px;">Nayab Maryam</span>
-            <span style="display: block; color: #555;">🔧 Backend Engineer</span>
-        </a>
-    </div>
+<table>
+    <tr>
+        <td align="center" valign="middle">
+            <img src="https://avatars.githubusercontent.com/taqi-m" width="48" height="48" alt="Muhammad Taqi" /><br/>
+            <a href="https://github.com/taqi-m"><b>Muhammad Taqi</b></a><br/>
+            <sub>Lead Developer</sub>
+        </td>
+        <td align="center" valign="middle">
+            <img src="https://avatars.githubusercontent.com/l232550" width="48" height="48" alt="Tooba Nadeem" /><br/>
+            <a href="https://github.com/l232550"><b>Tooba Nadeem</b></a><br/>
+            <sub>UI/UX Designer</sub>
+        </td>
+        <td align="center" valign="middle">
+            <img src="https://avatars.githubusercontent.com/NayabMaryam" width="48" height="48" alt="Nayab Maryam" /><br/>
+            <a href="https://github.com/NayabMaryam"><b>Nayab Maryam</b></a><br/>
+            <sub>Backend Engineer</sub>
+        </td>
+    </tr>
+</table>
+
 </div>
 
