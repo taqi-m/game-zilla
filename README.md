@@ -25,17 +25,18 @@
 
 A full-stack web application for gamers to discover, track, and review video games. Built with React, Node.js, Express, and SQL Server.
 
-> This project was developed as a university semester project for a Database Systems course, with a primary focus on implementing and demonstrating core database concepts. The application utilizes SQL Server features such as indexes, views, and triggers to leverage the full functionality of the database system.
+> This project was developed as a university semester project for a Database Systems course, with a primary focus on implementing and demonstrating core database concepts. The application utilizes SQL Server features such as indexes, views, and triggers to leverage the full functionality of the database system. Over time, this semester project evolved into a full-stack web application, integrating both frontend and backend technologies for a complete user experience.
 
 ## 📚 Table of Contents
 
 - [📋 Features](#-features)
-- [🛠️ Tech Stack](#-tech-stack)
+- [🛠️ Tech Stack](#️-tech-stack)
 - [🚀 Getting Started](#-getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
     - [Running the Application](#running-the-application)
 - [📝 API Documentation](#-api-documentation)
+- [📊 Database Schema](#-database-schema)
 - [📄 License](#-license)
 - [👥 Team](#-team)
 
@@ -66,7 +67,7 @@ A full-stack web application for gamers to discover, track, and review video gam
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/game-zilla.git
+   git clone https://github.com/taqi-m/game-zilla.git
    cd game-zilla
    ```
 
@@ -82,7 +83,7 @@ A full-stack web application for gamers to discover, track, and review video gam
    DB_USER=your_db_username
    DB_PASSWORD=your_db_password
    DB_DATABASE=your_db_name
-   JWT_SECRET=your_jwt_secret
+   DB_PORT=1433
    ```
 
 4. **Set up the frontend**
@@ -109,14 +110,218 @@ A full-stack web application for gamers to discover, track, and review video gam
 
 ## 📝 API Documentation
 
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/auth/register` | POST | Register a new user |
-| `/api/auth/login` | POST | Login a user |
-| `/api/games` | GET | Get all games |
-| `/api/games/:id` | GET | Get a specific game |
-| `/api/reviews` | POST | Create a review |
-| `/api/user/library` | GET | Get user's game library |
+| Endpoint | Method | Description | Parameters |
+|----------|--------|-------------|------------|
+| `/api/auth/register` | POST | Register a new user | username, email, password_hash |
+| `/api/auth/login` | POST | Login a user | email, password |
+| `/api/auth/logout` | POST | Logout a user | None |
+| `/api/users` | GET | Get all users | None |
+| `/api/users/:id` | GET | Get a specific user | None |
+| `/api/users/:id` | PUT | Update a user | username, email, is_active (optional) |
+| `/api/users/:id` | DELETE | Delete a user | None |
+| `/api/games` | GET | Get all games | sort, genre, platform (all optional) |
+| `/api/games/genres` | GET | Get all game genres | None |
+| `/api/games/platforms` | GET | Get all game platforms | None |
+| `/api/games/:id` | GET | Get a specific game | None |
+| `/api/games` | POST | Create a new game | title, description, price, genre, platform, developer, release_date, is_featured |
+| `/api/games/:id` | PUT | Update a game | title, description, price, genre, platform, developer, release_date, is_featured |
+| `/api/games/:id` | DELETE | Delete a game | None |
+| `/api/reviews/game/:gameId` | GET | Get reviews for a game | None |
+| `/api/reviews` | POST | Create a review | game_id, rating, comment |
+| `/api/reviews/:reviewId` | PUT | Update a review | rating, comment |
+| `/api/reviews/:reviewId` | DELETE | Delete a review | None |
+| `/api/cart/:userId` | GET | Get user's cart | None |
+| `/api/cart/add` | POST | Add item to cart | game_id, quantity, user_id |
+| `/api/cart/update` | PUT | Update cart item | cart_item_id, quantity |
+| `/api/cart/remove/:cart_item_id` | DELETE | Remove item from cart | None |
+| `/api/cart/:userId/clear` | DELETE | Clear user's cart | None |
+| `/api/orders` | GET | Get all orders | None |
+| `/api/orders/:userId` | GET | Get orders for a user | None |
+| `/api/orders` | POST | Place an order | user_id, cart_id, payment_id, shipping_address, billing_address |
+| `/api/orders/details/:orderId` | GET | Get order details | None |
+| `/api/orders/status/:orderId` | PUT | Update order status | status |
+| `/api/orders/payment` | POST | Process payment | user_id, cart_id, amount, payment_method, card_last4 (optional) |
+| `/api/categories` | GET | Get all categories | None |
+| `/api/categories` | POST | Create a category | name |
+| `/api/categories/:id` | PUT | Update a category | name |
+| `/api/categories/:id` | DELETE | Delete a category | None |
+
+## 📊 Database Schema
+
+The following Entity-Relationship Diagram (ERD) shows the database structure of Game-Zilla:
+
+```mermaid
+%%{init: { 
+    'theme': 'base',
+    'themeVariables': {
+        'primaryColor': '#f0f4ff',
+        'primaryBorderColor': '#4a6baf',
+        'primaryTextColor': '#1a237e',
+        'lineColor': '#3a5683',
+        'tertiaryColor': '#e3f2fd',
+        'tertiaryBorderColor': '#90caf9',
+        'fontFamily': 'Arial, sans-serif',
+        'fontSize': '16px',
+        'edgeLabelBackground': '#f8f9fa',
+        'entityLabelFontWeight': 'bold'
+    },
+    'themeConfig': {
+        'nodeTextMargin': 10,
+        'padding': 15,
+        'entityPadding': 12
+    }
+}}%%
+erDiagram
+    USERS ||--o{ ORDERS : "places"
+    USERS ||--|| CARTS : "has"
+    USERS ||--o{ REVIEWS : "writes"
+    USERS ||--o{ USER_ROLES : "has"
+    USERS {
+        int user_id PK
+        varchar username
+        varchar email
+        varchar password_hash
+        boolean is_verified
+        boolean is_active
+        datetime created_at
+        datetime updated_at
+        datetime last_login_at
+    }
+
+    ROLES ||--o{ USER_ROLES : "assigned"
+    ROLES ||--o{ ROLE_PERMISSIONS : "grants"
+    ROLES {
+        int role_id PK
+        varchar name
+        varchar description
+    }
+
+    PERMISSIONS ||--o{ ROLE_PERMISSIONS : "includes"
+    PERMISSIONS {
+        int permission_id PK
+        varchar code
+        varchar description
+    }
+
+    GAMES ||--o{ ORDER_ITEMS : "ordered_in"
+    GAMES ||--o{ INVENTORY : "stocked_in"
+    GAMES ||--o{ GAME_CATEGORIES : "categorized_as"
+    GAMES ||--o{ REVIEWS : "has"
+    GAMES ||--o{ GAME_IMAGES : "displays"
+    GAMES {
+        int game_id PK
+        varchar title
+        text description
+        decimal price
+        varchar genre
+        varchar platform
+        varchar developer
+        date release_date
+        boolean is_featured
+        datetime created_at
+        datetime updated_at
+    }
+
+    CARTS ||--o{ CART_ITEMS : "contains"
+    CARTS {
+        int cart_id PK
+        int user_id FK
+        datetime created_at
+        datetime updated_at
+    }
+
+    ORDERS ||--o{ ORDER_ITEMS : "contains"
+    ORDERS ||--|| PAYMENTS : "processed_via"
+    ORDERS {
+        int order_id PK
+        int user_id FK
+        datetime order_date
+        decimal subtotal
+        decimal tax_amount
+        decimal shipping_cost
+        decimal total_amount
+        varchar status
+        varchar shipping_address
+        varchar billing_address
+        datetime updated_at
+    }
+
+    CATEGORIES ||--o{ GAME_CATEGORIES : "groups"
+    CATEGORIES {
+        int category_id PK
+        varchar name
+    }
+
+    PAYMENTS {
+        int payment_id PK
+        int order_id FK
+        datetime payment_date
+        decimal amount
+        varchar payment_method
+        varchar status
+        varchar transaction_id
+        varchar card_last4
+    }
+
+    INVENTORY {
+        int inventory_id PK
+        int game_id FK
+        int stock_quantity
+        int reserved_quantity
+        datetime last_restock
+    }
+
+    REVIEWS {
+        int review_id PK
+        int user_id FK
+        int game_id FK
+        int rating
+        text comment
+        datetime created_at
+        datetime updated_at
+    }
+
+    GAME_IMAGES {
+        int image_id PK
+        int game_id FK
+        varchar image_url
+        boolean is_primary
+        int display_order
+    }
+
+    USER_ROLES {
+        int user_id FK, PK
+        int role_id FK, PK
+        datetime assigned_at
+    }
+
+    ROLE_PERMISSIONS {
+        int role_id FK, PK
+        int permission_id FK, PK
+    }
+
+    CART_ITEMS {
+        int cart_item_id PK
+        int cart_id FK
+        int game_id FK
+        int quantity
+        datetime added_at
+    }
+
+    ORDER_ITEMS {
+        int item_id PK
+        int order_id FK
+        int game_id FK
+        int quantity
+        decimal unit_price
+        decimal subtotal
+    }
+    
+    GAME_CATEGORIES {
+        int game_id FK, PK
+        int category_id FK,PK
+    }
+```
 
 ## 📄 License
 
