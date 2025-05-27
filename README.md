@@ -18,8 +18,8 @@
     <a href="https://jwt.io/">
         <img src="https://img.shields.io/badge/JWT-F7B93E?style=for-the-badge&logo=jsonwebtokens&logoColor=000000" alt="JWT" />
     </a>
-    <a href="https://www.gnu.org/licenses/gpl-3.0">
-        <img src="https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge" alt="License: GPL v3" />
+    <a href="./LICENSE">
+        <img src="https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge" alt="License: MIT" />
     </a>
 </p>
 
