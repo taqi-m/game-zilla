@@ -120,12 +120,13 @@ A full-stack web application for gamers to discover, track, and review video gam
 
 ## 📄 License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. - see the [LICENSE](LICENSE) file for details.
 
 This means:
 - You are free to use, modify, and distribute this software
-- If you distribute modified versions, they must also be licensed under the GPL-3.0
-- Any derivative works must be open source
+- You may distribute modified versions under any license of your choice
+- You are not required to release derivative works as open source
+- The software is provided “as is”, without warranty of any kind
 <div align="center">
 
 ## 👥 Team
