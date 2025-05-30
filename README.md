@@ -108,38 +108,24 @@ A full-stack web application for gamers to discover, track, and review video gam
    ```
    The application will open in your browser at http://localhost:3000
 
-## 📝 API Documentation
+## 📝 API Documentation (General Endpoints)
 
 | Endpoint | Method | Description | Parameters |
 |----------|--------|-------------|------------|
 | `/api/auth/register` | POST | Register a new user | username, email, password_hash |
 | `/api/auth/login` | POST | Login a user | email, password |
 | `/api/auth/logout` | POST | Logout a user | None |
-| `/api/users` | GET | Get all users | None |
-| `/api/users/:id` | GET | Get a specific user | None |
-| `/api/users/:id` | PUT | Update a user | username, email, is_active (optional) |
-| `/api/users/:id` | DELETE | Delete a user | None |
 | `/api/games` | GET | Get all games | sort, genre, platform (all optional) |
 | `/api/games/genres` | GET | Get all game genres | None |
 | `/api/games/platforms` | GET | Get all game platforms | None |
 | `/api/games/:id` | GET | Get a specific game | None |
-| `/api/games` | POST | Create a new game | title, description, price, genre, platform, developer, release_date, is_featured |
-| `/api/games/:id` | PUT | Update a game | title, description, price, genre, platform, developer, release_date, is_featured |
-| `/api/games/:id` | DELETE | Delete a game | None |
-| `/api/reviews/game/:gameId` | GET | Get reviews for a game | None |
-| `/api/reviews` | POST | Create a review | game_id, rating, comment |
-| `/api/reviews/:reviewId` | PUT | Update a review | rating, comment |
-| `/api/reviews/:reviewId` | DELETE | Delete a review | None |
 | `/api/cart/:userId` | GET | Get user's cart | None |
 | `/api/cart/add` | POST | Add item to cart | game_id, quantity, user_id |
 | `/api/cart/update` | PUT | Update cart item | cart_item_id, quantity |
 | `/api/cart/remove/:cart_item_id` | DELETE | Remove item from cart | None |
-| `/api/cart/:userId/clear` | DELETE | Clear user's cart | None |
-| `/api/orders` | GET | Get all orders | None |
 | `/api/orders/:userId` | GET | Get orders for a user | None |
 | `/api/orders` | POST | Place an order | user_id, cart_id, payment_id, shipping_address, billing_address |
 | `/api/orders/details/:orderId` | GET | Get order details | None |
-| `/api/orders/status/:orderId` | PUT | Update order status | status |
 | `/api/orders/payment` | POST | Process payment | user_id, cart_id, amount, payment_method, card_last4 (optional) |
 | `/api/categories` | GET | Get all categories | None |
 | `/api/categories` | POST | Create a category | name |
