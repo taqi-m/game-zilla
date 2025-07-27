@@ -327,17 +327,17 @@ This means:
         <td align="center" valign="middle">
             <img src="https://avatars.githubusercontent.com/taqi-m" width="48" height="48" alt="Muhammad Taqi" /><br/>
             <a href="https://github.com/taqi-m"><b>Muhammad Taqi</b></a><br/>
-            <sub>Lead Developer</sub>
+            <sub>Lead Developer (UI + API Integration)</sub>
         </td>
         <td align="center" valign="middle">
             <img src="https://avatars.githubusercontent.com/l232550" width="48" height="48" alt="Tooba Nadeem" /><br/>
             <a href="https://github.com/l232550"><b>Tooba Nadeem</b></a><br/>
-            <sub>UI/UX Designer</sub>
+            <sub>Project Manager & Database Engineer</sub>
         </td>
         <td align="center" valign="middle">
             <img src="https://avatars.githubusercontent.com/NayabMaryam" width="48" height="48" alt="Nayab Maryam" /><br/>
             <a href="https://github.com/NayabMaryam"><b>Nayab Maryam</b></a><br/>
-            <sub>Backend Engineer</sub>
+            <sub>Database Engineer</sub>
         </td>
     </tr>
 </table>
